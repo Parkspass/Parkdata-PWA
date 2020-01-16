@@ -1,0 +1,61 @@
+@media only screen and (max-device-width: 1000px){
+    html{
+        padding: 12px;
+        background-color: rgb(224, 223, 223);
+    }
+    #top-wrapper{
+        padding: 10px;
+        background-color: white;
+    }
+    body{
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: none;
+        color: #000;
+    }
+    .input-wrapper{
+        padding-bottom: 15px;
+    }
+    input{
+        display: block;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgb(224, 223, 223);
+    }
+    label{
+        display: block;
+        font-size: 14px;
+        color: rgb(148, 147, 147);
+        padding-bottom: 10px;
+    }
+    h4{
+        font-size: 14px;
+        color: rgb(148, 147, 147);
+        padding-bottom: 10px; 
+        font-weight: normal;
+        display: inline;
+        padding-bottom: 10px;
+    }
+    #location{
+        padding-bottom: 10px;
+    }
+    #latitude, #longitude, .lat-long, p{
+        display: inline;
+        font-size: 14px;
+        color: rgb(148, 147, 147);
+    }
+    #upCount, #downCount{
+        border: none;
+    }
+    #upButton, #downButton{
+        padding-bottom: 10px;
+        border: none;
+    }
+    #file{
+        background-color: rgb(145, 118, 99);
+        width: 80%;
+        height: 30px;
+        text-align: center
+    }
+}
+  
