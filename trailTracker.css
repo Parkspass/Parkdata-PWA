@@ -44,11 +44,13 @@
         font-size: 14px;
         color: rgb(148, 147, 147);
     }
+    #downField, #startTime{
+        padding-top: 10px;
+    }
     #upCount, #downCount{
         border: none;
     }
     #upButton, #downButton{
-        padding-bottom: 10px;
         border: none;
     }
     #file{
