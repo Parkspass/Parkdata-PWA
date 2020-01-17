@@ -11,7 +11,7 @@
         <div id="top-wrapper">
             <div class="input-wrapper">
                 <label for="nameField">Name</label>
-                <input type="text" name="name" id="nameField">
+                <input type="text" name="name" id="nameField" placeholder="John Doe...">
             </div>
             <div class="input-wrapper">
                 <label for="dateField">Date</label>
@@ -24,7 +24,7 @@
                 <label for="trailField">Trail or Segment Name</label>
                 <div class="trailField" style="width:100%;">
                     <select>
-                        <option value="0">Select Trail</option>
+                        <option value="0">Select Trail<span id="selectTrail" style='font-size:100px;'>&#8681;</span> </option>
                         <option value="1">Upper Emerald Pools</option>
                         <option value="2">Middle Emerald Pools</option>
                         <option value="3">Lower Emerald Pools</option>
@@ -64,16 +64,18 @@
                     </select>
                 </div>
             </div>
+
             <div class="input-wrapper">
                     <label id="upField">Number of Encounters (up direction)</label>
                     <input type="number" placeholder="0" id="upCount">
             </div>
-            <input type="image" src="button_dark.png" height="150px" width="100%" id="upButton" onClick="click()" />
+            <input type="image" src="button_dark.png" height="150px" width="100%" id="upButton" />
+
             <div class="input-wrapper">
                     <label id="downField">Number of Encounters (down direction)</label>
                     <input type="number" placeholder="0" id="downCount">
             </div>
-            <input type="image" src="button_light.png" height="150px" width="100%" id="downButton" onClick="click()" />
+            <input type="image" src="button_light.png" height="150px" width="100%" id="downButton" />
 
             <div class="input-wrapper">
                 <label id="startTime">Start Time</label>

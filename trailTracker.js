@@ -12,11 +12,18 @@ navigator.geolocation.getCurrentPosition(function(position) {
     longText.innerText = long.toFixed(2);
 });
 
-var upButton = document.querySelector("#upButton");
-var clicks = 0;
-upButton.onClick = function click() {
-    clicks += 1;
-    document.querySelector("#upCount").innerHTML = clicks;
-};
+var upButton = document.getElementById("upButton");
+var clicksUp = 0;
+upButton.addEventListener('click', function (){
+    console.log("upButton pushed");
+    clicksUp += 1;
+    document.getElementById("upCount").placeholder = clicksUp;
+});
 
-$('.timepicker').pickatime();
+var downButton = document.getElementById("downButton");
+var clicksDown = 0;
+downButton.addEventListener('click', function (){
+    console.log("downButton pushed");
+    clicksDown += 1;
+    document.getElementById("downCount").placeholder = clicksDown;
+});
