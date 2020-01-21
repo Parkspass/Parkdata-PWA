@@ -1,122 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Trail Tracker</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-        <meta name="robots" content="noindex">
-        <link rel="stylesheet" href=trailTracker.css>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        <title>Product App</title>
+        <link rel="stylesheet" type="text/css" href="trailTracker.css">
     </head>
-    <body>
-        <div id="top-wrapper">
-            <div class="input-wrapper">
-                <label for="nameField">Name</label>
-                <input type="text" name="name" id="nameField" placeholder="John Doe...">
-            </div>
-            <div class="input-wrapper">
-                <label for="dateField">Date</label>
-                <input type="date" name="date" id="dateField">
-            </div>
-            <div id="location">
-                <h4>Location</h4><p class="lat-long"> ( <p id="latitude">0.00,</p> <p id="longitude">0.00</p><p class="lat-long">)</p></p>
-            </div>
-            <div class="input-wrapper">
-                <label for="trailField">Trail or Segment Name</label>
-                <div class="trailField" style="width:100%;">
-                    <select>
-                        <option value="0">Select Trail<span id="selectTrail" style='font-size:100px;'>&#8681;</span> </option>
-                        <option value="1">Upper Emerald Pools</option>
-                        <option value="2">Middle Emerald Pools</option>
-                        <option value="3">Lower Emerald Pools</option>
-                        <option value="4">The Watchman Trail</option>
-                        <option value="5">Visitor Center Strolls</option>
-                        <option value="6">Pa'rus Trail</option>
-                        <option value="7">The Sand Bench Loop</option>
-                        <option value="8">Weeping Rock</option>
-                        <option value="9">Observation Point</option>
-                        <option value="10">Hidden Canyon</option>
-                        <option value="11">Angels Landing</option>
-                        <option value="12">West Rim Trail</option>
-                        <option value="13">The Grotto Trail</option>
-                        <option value="14">Riverside Walk</option>
-                        <option value="15">Banks of the Virgin River</option>
-                        <option value="16">Cable Mountain</option>
-                        <option value="17">Deertrap Mountain</option>
-                        <option value="18">Low Pine Creek</option>
-                        <option value="19">Menu Falls</option>
-                        <option value="20">Echo Canyon</option>
-                        <option value="21">Behunin Canyon</option>
-                        <option value="22">Archeology Trail</option>
-                        <option value="23">Kayenta Trail</option>
-                        <option value="24">Canyon Overlook Trail</option>
-                        <option value="25">Taylor Creek Trail</option>
-                        <option value="26">Timber Creek Trail</option>
-                        <option value="27">La Verkin Creek Trail</option>
-                        <option value="28">Kolob Arch Trail</option>
-                        <option value="29">Right Fork Trailhead</option>
-                        <option value="30">Left Fork Trailhead</option>
-                        <option value="31">Grapevine Trailhead</option>
-                        <option value="32">Wildcat Trailhead</option>
-                        <option value="33">Subway Trailhead</option>
-                        <option value="34">Chinle Trailhead</option>
-                        <option value="35">Lee Pass Trailhead</option>
-                        <option value="36">Lady Mountain</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="input-wrapper">
-                    <label id="upField">Number of Encounters (up direction)</label>
-                    <input type="number" placeholder="0" id="upCount">
-            </div>
-            <input type="image" src="button_dark.png" height="150px" width="100%" id="upButton" />
-
-            <div class="input-wrapper">
-                    <label id="downField">Number of Encounters (down direction)</label>
-                    <input type="number" placeholder="0" id="downCount">
-            </div>
-            <input type="image" src="button_light.png" height="150px" width="100%" id="downButton" />
-
-            <div class="input-wrapper">
-                <label id="startTime">Start Time</label>
-            </div>
-
-            <div class="input-wrapper">
-                <label id="finishTime">Finish Time</label>
-            </div>
-
-            <div class="input-wrapper">
-                <label id="weather">Weather</label>
-            </div>
-
-            <div class="input-wrapper">
-                <label id="notes">Notes</label>
-            </div>
-
-            <div class="input-wrapper">
-                <label id="visitation">Visitation</label>
-            </div>
-
-            <div class="input-wrapper">
-                <label id="trailStatus">Trail Status</label>
-            </div>
-
-            <div class="input-wrapper">
-                <label id="trailConditions">Trail Conditions</label>
-            </div>
-
-            <div class="input-wrapper">
-                <label id="visitation">Visitation</label>
-            </div>
-
-            <div class="input-wrapper">
-                <label id="photos">Photos</label>
-                <input type="file" id="file" accept=".jpg, .jpeg, .png" name="file" multiple>
-            </div>
-
-        </div>
-
-        <script type="text/javascript" src="trailTracker.js"></script>
-
-    </body>
 </html>
+<body>
+    <div id="app">
+        <Header></Header>
+        <p id="status"></p>
+        <a id="map-link" target="_blank"></a>
+        <report></report>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="trailTracker.js"></script>
+</body>
