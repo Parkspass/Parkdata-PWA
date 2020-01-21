@@ -79,7 +79,7 @@ Vue.component("report", {
 
         <p>
             <label>Visitation</label>
-            <select id="visitation" v-model.number="visitationOptions">
+            <select id="visitationOptions" v-model.number="visitationOptions">
                 <option
                     v-for="(visitation, index) in visitationOptions" 
                     :key="index">{{ visitation }}</option>
@@ -200,20 +200,51 @@ Vue.component("report", {
         }
     },
     methods: {
+        
         // need to rewrite onSubmit to send a confirmation to the user
         // and send the report via email.
+
         onSubmit() {
             if (this.name) {
                 let productReview = {
-                    name: this.name
+                    name: this.name,
+                    date: this.date,
+                    location: this.location,
+                    upCount: this.upCount,
+                    downCount: this.downCount,
+                    weather: this.weatherOptions,
+                    notes: this.notes,
+                    visitation: this.visitation,
+                    trailStatus: this.trailStatus,
+                    trailConditions: this.trailConditions
+                    //here we need to also grab latitude and longitude
                 }
+
+                //For some reason we aren't able to access weather, 
+                //visitation, trailStatus, or trailConditions from the form.
+                //I will continue working on that.
+
+                console.log(this.name)
+                console.log(this.date)
+                console.log(this.location)
+                console.log(this.upCount)
+                console.log(this.downCount)
+                console.log(this.weatherOptions)
+                console.log(this.notes)
+                console.log(this.visitationOptions)
+                console.log(this.trailStatusOptions)
+                console.log(this.trailConditionsOptions)
+                
+                //For now work here to get the email working and we will add the info later:
+                //->
+
+                //
+
                 eventBus.$emit('review-submitted', productReview)
                 this.name = null
             }
             else {
                 if (!this.name) this.errors.push("Name required.")
-                if (!this.review) this.errors.push("Review required.")
-                if (!this.rating) this.errors.push("Rating required.")
             }
         },
         // these simply increment the counters for up and down direction.
@@ -267,5 +298,5 @@ function geoFindMe() {
         navigator.geolocation.getCurrentPosition(success, error);
     }
   
-  }
+    }
 geoFindMe();

@@ -4,12 +4,6 @@ body {
         margin: 0px;
 }
 
-.nav-bar {
-    background: linear-gradient(-90deg, #84CF6A, #16C0B0);
-    height: 60px;
-    margin-bottom: 15px;
-}
-
 img {
     border: 1px solid #d8d8d8;
     width: 70%;
