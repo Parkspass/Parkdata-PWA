@@ -55,17 +55,15 @@ Vue.component("report", {
 
         <p>
             <label>Start Time</label>
-
         </p>
 
         <p>
             <label>End Time</label>
-
         </p>
 
         <p>
             <label>Weather</label>
-            <select id="weatherOptions" v-model.number="weatherOptions">
+            <select id="weatherOptions" v-model="selectedWeatherOption">
                 <option
                     v-for="(weather, index) in weatherOptions" 
                     :key="index">{{ weather }}</option>
@@ -79,7 +77,7 @@ Vue.component("report", {
 
         <p>
             <label>Visitation</label>
-            <select id="visitationOptions" v-model.number="visitationOptions">
+            <select id="visitationOptions" v-model="selectedVisitationOption">
                 <option
                     v-for="(visitation, index) in visitationOptions" 
                     :key="index">{{ visitation }}</option>
@@ -88,7 +86,7 @@ Vue.component("report", {
 
         <p>
             <label>Trail Status</label>
-            <select id="trailStatusOptions" v-model.number="trailStatusOptions">
+            <select id="trailStatusOptions" v-model="selectedTrailStatusOption">
                 <option
                     v-for="(trailStatus, index) in trailStatusOptions" 
                     :key="index">{{ trailStatus }}</option>
@@ -97,7 +95,7 @@ Vue.component("report", {
             
         <p>
             <label>Trail Conditions</label>
-            <select id="trailConditionsOptions" v-model.number="trailConditionsOptions">
+            <select id="trailConditionsOptions" v-model="selectedTrailConditionsOption">
                 <option
                     v-for="(trailConditions, index) in trailConditionsOptions" 
                     :key="index">{{ trailConditions }}</option>
@@ -175,6 +173,7 @@ Vue.component("report", {
                 "Haze",
                 "Smokey"
             ],
+            selectedWeatherOption: null,
             notes: null,
             visitationOptions: [
                 "Not busy",
@@ -182,12 +181,14 @@ Vue.component("report", {
                 "Little busy",
                 "Busy as it gets"
             ],
+            selectedVisitationOption: null,
             trailStatusOptions: [
                 "Clear",
                 "Minor Issue",
                 "Significant Issue",
                 "Closed or Major Issue"
             ],
+            selectedTrailStatusOption: null,
             trailConditionsOptions: [
                 "Dry or Normal summer conditions",
                 "Mostly Dry with some water",
@@ -196,6 +197,7 @@ Vue.component("report", {
                 "Snow",
                 "Snow and Ice"
             ],
+            selectedTrailConditionsOption: null,
             photos: null
         }
     },
@@ -203,7 +205,6 @@ Vue.component("report", {
         
         // need to rewrite onSubmit to send a confirmation to the user
         // and send the report via email.
-
         onSubmit() {
             if (this.name) {
                 let productReview = {
@@ -212,30 +213,29 @@ Vue.component("report", {
                     location: this.location,
                     upCount: this.upCount,
                     downCount: this.downCount,
-                    weather: this.weatherOptions,
+                    weather: this.selectedWeatherOption,
                     notes: this.notes,
-                    visitation: this.visitation,
-                    trailStatus: this.trailStatus,
-                    trailConditions: this.trailConditions
+                    visitation: this.selectedVisitationOption,
+                    trailStatus: this.selectedTrailStatusOption,
+                    trailConditions: this.selectedTrailConditionsOption
                     //here we need to also grab latitude and longitude
                 }
 
-                //For some reason we aren't able to access weather, 
-                //visitation, trailStatus, or trailConditions from the form.
-                //I will continue working on that.
+                //We are now able to access the data with these names:
+                //It is the data member that is connected to the v-model tag.
 
                 console.log(this.name)
                 console.log(this.date)
                 console.log(this.location)
                 console.log(this.upCount)
                 console.log(this.downCount)
-                console.log(this.weatherOptions)
+                console.log(this.selectedWeatherOption)
                 console.log(this.notes)
-                console.log(this.visitationOptions)
-                console.log(this.trailStatusOptions)
-                console.log(this.trailConditionsOptions)
+                console.log(this.selectedVisitationOption)
+                console.log(this.selectedTrailStatusOption)
+                console.log(this.selectedTrailConditionsOption)
                 
-                //For now work here to get the email working and we will add the info later:
+                //The email call should go here:
                 //->
 
                 //
