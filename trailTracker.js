@@ -9,6 +9,16 @@ Vue.component("Header", {
     </form>
     `
 })
+	
+var startDate = new Date();
+var date = startDate.getFullYear()+'-'+(startDate.getMonth()+1)+'-'+startDate.getDate();
+var time = startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
+var startDateTime = date+' '+time;
+
+var endDate = new Date();
+date = endDate.getFullYear()+'-'+(endDate.getMonth()+1)+'-'+endDate.getDate();
+time = endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
+var endDateTime = date+' '+time;
 
 
 // Report template
@@ -34,11 +44,17 @@ Vue.component("report", {
         </p>
         <p>
             <label>Trail or Segment Name:</label>
-            <select id="location" v-model.number="location">
+            <select id="location" v-model="location">
                 <option
                     v-for="(trail, index) in trails" 
                     :key="index">{{ trail }}</option>
             </select>
+        </p>
+
+        <p>
+            <p id="status"></p>
+            <p id="latitude" v-model="latitude"></p>
+            <p id="longitude" v-model="longitude"></p>
         </p>
 
         <p>
@@ -119,6 +135,8 @@ Vue.component("report", {
             name: null,
             date: null,
             location: null,
+            latitude: null,
+            longitude: null,
             upCount: 0,
             downCount: 0,
             errors: [],
@@ -227,6 +245,8 @@ Vue.component("report", {
                 console.log(this.name)
                 console.log(this.date)
                 console.log(this.location)
+                console.log(this.latitude)
+                console.log(this.longitude)
                 console.log(this.upCount)
                 console.log(this.downCount)
                 console.log(this.selectedWeatherOption)
@@ -273,18 +293,18 @@ var app = new Vue({
 function geoFindMe() {
 
     const status = document.querySelector('#status');
-    const mapLink = document.querySelector('#map-link');
-  
-    mapLink.href = '';
-    mapLink.textContent = '';
   
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        status.textContent = '';
-        mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-        mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+        status.textContent = "";
+
+        var latitudeMem = document.querySelector("#latitude");
+        var longitudeMem = document.querySelector("#longitude");
+        
+        latitudeMem.textContent = `Latitude: ${latitude} °`;
+        longitudeMem.textContent = `Longitude: ${longitude} °`;
     }
   
     function error() {
@@ -298,5 +318,5 @@ function geoFindMe() {
         navigator.geolocation.getCurrentPosition(success, error);
     }
   
-    }
+}
 geoFindMe();
