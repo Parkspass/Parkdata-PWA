@@ -6,13 +6,29 @@
         <meta content="utf-8" http-equiv="encoding">
         <title>Product App</title>
         <link rel="stylesheet" type="text/css" href="trailTracker.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+        <link rel="manifest" href="./site.webmanifest">
+        <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+    </script>
     </head>
 </html>
 <body>
+  <button class="add-button">Add to Home</button>
     <div id="app">
         <Header></Header>
         <report></report>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="trailTracker.js"></script>
+    <noscript>Please install Javascript</noscript>
+
 </body>
