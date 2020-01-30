@@ -244,7 +244,7 @@ Vue.component("report", {
 
                 //The email call should go here:
                 //->
-                var email = "rory.wagner@dixiesuccess.org";
+                var email = "ckgard27@gmail.com";
                 var park = "Zion%20Data%20Submission"
                 window.open("mailto:" + email + "?subject=" + park + "&body=" + 
                     "Name:%20" + this.name + "%0A" +
