@@ -9,7 +9,6 @@ Vue.component("Header", {
     </form>
     `
 })
-
 var startDate = new Date();
 var date = startDate.getFullYear()+'-'+(startDate.getMonth()+1)+'-'+startDate.getDate();
 var time = startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
@@ -67,14 +66,6 @@ Vue.component("report", {
             <label>Number of Encounters (Down Direction): {{ downCount }}</label>
             <img v-on:click="addDownCount"
                 src="pics/button_down.png"></img>
-        </p>
-
-        <p>
-            <label>Start Time</label>
-        </p>
-
-        <p>
-            <label>End Time</label>
         </p>
 
         <p>
@@ -237,10 +228,11 @@ Vue.component("report", {
                     trailStatus: this.selectedTrailStatusOption,
                     trailConditions: this.selectedTrailConditionsOption
                     //here we need to also grab latitude and longitude
-                }
+                };
 
                 //We are now able to access the data with these names:
                 //It is the data member that is connected to the v-model tag.
+
 
                 console.log(this.name)
                 console.log(this.date)
@@ -257,7 +249,21 @@ Vue.component("report", {
 
                 //The email call should go here:
                 //->
-
+                var email = "ckgard27@gmail.com";
+                var park = "Zion%20Data%20Submission"
+                window.open("mailto:" + email + "?subject=" + park + "&body=" + 
+                    "Name:%20" + name + "%0A" +
+                    "Date:%20" + date + "%0A" +
+                    "Location:%20" + location + "%0A" +
+                    "GeoLocation:%20" + latitude + ",%20" + longitude + "%0A" +
+                    "Count%20Upwards:%20" + upCount + "%0A" + 
+                    "Count%20Downwards:%20" + downCount + "%0A" + 
+                    "Weather:%20" + weather + "%0A" + 
+                    "Visitation%20Report:%20" + selectedVisitationOption + "%0A" +
+                    "Trail%20Status:%20" + selectedTrailStatusOption + "%0A" + 
+                    "Trail%20Condition:%20" + selectedTrailConditionsOption + "%0A" +
+                    "Notes:%20" + notes
+                );
                 //
 
                 eventBus.$emit('review-submitted', productReview)
