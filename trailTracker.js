@@ -8,8 +8,7 @@ Vue.component("Header", {
         </h1>
     </form>
     `
-});
-	
+})
 var startDate = new Date();
 var date = startDate.getFullYear()+'-'+(startDate.getMonth()+1)+'-'+startDate.getDate();
 var time = startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
@@ -37,16 +36,16 @@ Vue.component("report", {
         </p>
         <p>
             <label>Date:</label>
-            <input id="date" 
-                v-model="date" 
-                placeholder="date" 
+            <input id="date"
+                v-model="date"
+                placeholder="date"
                 type="date">
         </p>
         <p>
             <label>Trail or Segment Name:</label>
             <select id="location" v-model="location">
                 <option
-                    v-for="(trail, index) in trails" 
+                    v-for="(trail, index) in trails"
                     :key="index">{{ trail }}</option>
             </select>
         </p>
@@ -59,13 +58,13 @@ Vue.component("report", {
 
         <p>
             <label>Number of Encounters (Up Direction): {{ upCount }}</label>
-            <img v-on:click="addUpCount" 
+            <img v-on:click="addUpCount"
                 src="pics/button_up.png"></img>
         </p>
 
         <p>
             <label>Number of Encounters (Down Direction): {{ downCount }}</label>
-            <img v-on:click="addDownCount" 
+            <img v-on:click="addDownCount"
                 src="pics/button_down.png"></img>
         </p>
 
@@ -73,13 +72,13 @@ Vue.component("report", {
             <label>Weather</label>
             <select id="weatherOptions" v-model="selectedWeatherOption">
                 <option
-                    v-for="(weather, index) in weatherOptions" 
+                    v-for="(weather, index) in weatherOptions"
                     :key="index">{{ weather }}</option>
             </select>
         </p>
-            
+
         <p>
-            <label>Notes:</label>      
+            <label>Notes:</label>
             <textarea id="notes" v-model="notes"></textarea>
         </p>
 
@@ -87,7 +86,7 @@ Vue.component("report", {
             <label>Visitation</label>
             <select id="visitationOptions" v-model="selectedVisitationOption">
                 <option
-                    v-for="(visitation, index) in visitationOptions" 
+                    v-for="(visitation, index) in visitationOptions"
                     :key="index">{{ visitation }}</option>
             </select>
         </p>
@@ -96,29 +95,29 @@ Vue.component("report", {
             <label>Trail Status</label>
             <select id="trailStatusOptions" v-model="selectedTrailStatusOption">
                 <option
-                    v-for="(trailStatus, index) in trailStatusOptions" 
+                    v-for="(trailStatus, index) in trailStatusOptions"
                     :key="index">{{ trailStatus }}</option>
             </select>
         </p>
-            
+
         <p>
             <label>Trail Conditions</label>
             <select id="trailConditionsOptions" v-model="selectedTrailConditionsOption">
                 <option
-                    v-for="(trailConditions, index) in trailConditionsOptions" 
+                    v-for="(trailConditions, index) in trailConditionsOptions"
                     :key="index">{{ trailConditions }}</option>
             </select>
         </p>
 
-        
+
         <div class="input-wrapper">
             <label id="photos">Photos</label>
             <input type="file" id="file" accept=".jpg, .jpeg, .png" name="file" multiple>
         </div>
-    
+
         <p>
-            <input type="submit" value="Submit">  
-        </p>    
+            <input type="submit" value="Submit">
+        </p>
 
     </form>
     `,
@@ -212,7 +211,7 @@ Vue.component("report", {
         }
     },
     methods: {
-        
+
         // need to rewrite onSubmit to send a confirmation to the user
         // and send the report via email.
         onSubmit() {
@@ -234,19 +233,20 @@ Vue.component("report", {
                 //We are now able to access the data with these names:
                 //It is the data member that is connected to the v-model tag.
 
-                console.log(this.name);
-                console.log(this.date);
-                console.log(this.location);
-                console.log(this.latitude);
-                console.log(this.longitude);
-                console.log(this.upCount);
-                console.log(this.downCount);
-                console.log(this.selectedWeatherOption);
-                console.log(this.notes);
-                console.log(this.selectedVisitationOption);
-                console.log(this.selectedTrailStatusOption);
-                console.log(this.selectedTrailConditionsOption);
-                
+
+                console.log(this.name)
+                console.log(this.date)
+                console.log(this.location)
+                console.log(this.latitude)
+                console.log(this.longitude)
+                console.log(this.upCount)
+                console.log(this.downCount)
+                console.log(this.selectedWeatherOption)
+                console.log(this.notes)
+                console.log(this.selectedVisitationOption)
+                console.log(this.selectedTrailStatusOption)
+                console.log(this.selectedTrailConditionsOption)
+
                 //The email call should go here:
                 //->
                 var email = "ckgard27@gmail.com";
@@ -299,7 +299,7 @@ var app = new Vue({
 function geoFindMe() {
 
     const status = document.querySelector('#status');
-  
+
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
@@ -308,21 +308,50 @@ function geoFindMe() {
 
         var latitudeMem = document.querySelector("#latitude");
         var longitudeMem = document.querySelector("#longitude");
-        
+
         latitudeMem.textContent = `Latitude: ${latitude} °`;
         longitudeMem.textContent = `Longitude: ${longitude} °`;
     }
-  
+
     function error() {
         status.textContent = 'Unable to retrieve your location';
     }
-  
+
     if (!navigator.geolocation) {
         status.textContent = 'Geolocation is not supported by your browser';
     } else {
         status.textContent = 'Locating…';
         navigator.geolocation.getCurrentPosition(success, error);
     }
-  
+
 }
 geoFindMe();
+
+let deferredPrompt;
+const addBtn = document.querySelector('.add-button');
+addBtn.style.display = 'none';
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI to notify the user they can add to home screen
+  addBtn.style.display = 'block';
+
+  addBtn.addEventListener('click', (e) => {
+    // hide our user interface that shows our A2HS button
+    addBtn.style.display = 'none';
+    // Show the prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        deferredPrompt = null;
+      });
+  });
+});
