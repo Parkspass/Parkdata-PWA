@@ -10,14 +10,7 @@ Vue.component("Header", {
     `
 })
 var startDate = new Date();
-var date = startDate.getFullYear()+'-'+(startDate.getMonth()+1)+'-'+startDate.getDate();
-var time = startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
-var startDateTime = date+' '+time;
-
-var endDate = new Date();
-date = endDate.getFullYear()+'-'+(endDate.getMonth()+1)+'-'+endDate.getDate();
-time = endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
-var endDateTime = date+' '+time;
+var startTime = startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
 
 
 // Report template
@@ -215,6 +208,8 @@ Vue.component("report", {
         // need to rewrite onSubmit to send a confirmation to the user
         // and send the report via email.
         onSubmit() {
+            var endDate = new Date();
+            var endTime = endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
             if (this.name) {
                 let productReview = {
                     name: this.name,
@@ -249,20 +244,22 @@ Vue.component("report", {
 
                 //The email call should go here:
                 //->
-                var email = "ckgard27@gmail.com";
+                var email = "rory.wagner@dixiesuccess.org";
                 var park = "Zion%20Data%20Submission"
                 window.open("mailto:" + email + "?subject=" + park + "&body=" + 
-                    "Name:%20" + name + "%0A" +
-                    "Date:%20" + date + "%0A" +
-                    "Location:%20" + location + "%0A" +
-                    "GeoLocation:%20" + latitude + ",%20" + longitude + "%0A" +
-                    "Count%20Upwards:%20" + upCount + "%0A" + 
-                    "Count%20Downwards:%20" + downCount + "%0A" + 
-                    "Weather:%20" + weather + "%0A" + 
-                    "Visitation%20Report:%20" + selectedVisitationOption + "%0A" +
-                    "Trail%20Status:%20" + selectedTrailStatusOption + "%0A" + 
-                    "Trail%20Condition:%20" + selectedTrailConditionsOption + "%0A" +
-                    "Notes:%20" + notes
+                    "Name:%20" + this.name + "%0A" +
+                    "Date:%20" + this.date + "%0A" +
+                    "StartTime:%20" + startTime + "%0A" +
+                    "EndTime:%20" + endTime + "%0A" +
+                    "Location:%20" + this.location + "%0A" +
+                    "GeoLocation:%20" + this.latitude + ",%20" + this.longitude + "%0A" +
+                    "Count%20Upwards:%20" + this.upCount + "%0A" + 
+                    "Count%20Downwards:%20" + this.downCount + "%0A" + 
+                    "Weather:%20" + this.weather + "%0A" + 
+                    "Visitation%20Report:%20" + this.selectedVisitationOption + "%0A" +
+                    "Trail%20Status:%20" + this.selectedTrailStatusOption + "%0A" + 
+                    "Trail%20Condition:%20" + this.selectedTrailConditionsOption + "%0A" +
+                    "Notes:%20" + this.notes
                 );
                 //
 
