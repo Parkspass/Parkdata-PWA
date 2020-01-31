@@ -46,8 +46,8 @@ Vue.component("report", {
 
         <p>
             <p id="status"></p>
-            <p id="latitude" v-model="latitude"></p>
-            <p id="longitude" v-model="longitude"></p>
+            <p>{{latitude}}</p>
+            <p>{{longitude}}</p>
         </p>
 
         <p>
@@ -121,6 +121,7 @@ Vue.component("report", {
             date: null,
             location: null,
             latitude: null,
+            geolocation: null,
             longitude: null,
             upCount: 0,
             downCount: 0,
@@ -204,7 +205,64 @@ Vue.component("report", {
             photos: null
         };
     },
+
+    //used to find location:
+    mounted(){
+
+        // function success(pos) {
+        //     var crd = pos.coords;
+
+        //     const status = document.querySelector('#status');
+        //     const latitude  = crd.latitude;
+        //     const longitude = crd.longitude;
+
+        //     console.log('Your current position is:');
+        //     console.log(`Latitude : ${latitude}`);
+        //     console.log(`Longitude: ${longitude}`);
+        //     console.log(`More or less ${crd.accuracy} meters.`);
+
+        //     status.textContent = "";
+
+        //     this.latitude = latitude;
+        //     this.longitude = longitude;
+
+        // }
+
+        
+
+        function error() {
+            status.textContent = 'Unable to retrieve your location';
+        }
+
+        if (!navigator.geolocation) {
+            status.textContent = 'Geolocation is not supported by your browser';
+        }
+        else {
+            status.textContent = 'Locating…';
+            navigator.geolocation.getCurrentPosition(this.handleGetGeoLocation, error);
+        }
+    },
+
+
     methods: {
+
+        handleGetGeoLocation(pos){
+            var crd = pos.coords;
+
+            const status = document.querySelector('#status');
+            const latitude  = crd.latitude;
+            const longitude = crd.longitude;
+
+            console.log('Your current position is:');
+            console.log(`Latitude : ${latitude}`);
+            console.log(`Longitude: ${longitude}`);
+            console.log(`More or less ${crd.accuracy} meters.`);
+
+            status.textContent = "";
+
+            this.latitude = latitude;
+            this.longitude = longitude;
+        },
 
         // need to rewrite onSubmit to send a confirmation to the user
         // and send the report via email.
@@ -296,38 +354,7 @@ var app = new Vue({
 });
 
 
-//used to find location:
-function geoFindMe() {
-
-    const status = document.querySelector('#status');
-
-    function success(position) {
-        const latitude  = position.coords.latitude;
-        const longitude = position.coords.longitude;
-
-        status.textContent = "";
-
-        var latitudeMem = document.querySelector("#latitude");
-        var longitudeMem = document.querySelector("#longitude");
-
-        latitudeMem.textContent = `Latitude: ${latitude} °`;
-        longitudeMem.textContent = `Longitude: ${longitude} °`;
-    }
-
-    function error() {
-        status.textContent = 'Unable to retrieve your location';
-    }
-
-    if (!navigator.geolocation) {
-        status.textContent = 'Geolocation is not supported by your browser';
-    } else {
-        status.textContent = 'Locating…';
-        navigator.geolocation.getCurrentPosition(success, error);
-    }
-
-}
-geoFindMe();
-
+//used to make it persist:
 let deferredPrompt;
 const addBtn = document.querySelector('.add-button');
 addBtn.style.display = 'none';
