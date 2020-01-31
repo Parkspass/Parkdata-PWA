@@ -1,4 +1,5 @@
-var eventBus = new Vue()
+ /*jshint esversion: 6 */
+var eventBus = new Vue();
 
 Vue.component("Header", {
     template: `
@@ -8,7 +9,7 @@ Vue.component("Header", {
         </h1>
     </form>
     `
-})
+});
 var startDate = new Date();
 var startTime = startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
 
@@ -201,7 +202,7 @@ Vue.component("report", {
             ],
             selectedTrailConditionsOption: null,
             photos: null
-        }
+        };
     },
     methods: {
 
@@ -215,13 +216,15 @@ Vue.component("report", {
                     name: this.name,
                     date: this.date,
                     location: this.location,
+                    geolocation: this.latitude + "," + this.longitude,
                     upCount: this.upCount,
                     downCount: this.downCount,
                     weather: this.selectedWeatherOption,
                     notes: this.notes,
                     visitation: this.selectedVisitationOption,
                     trailStatus: this.selectedTrailStatusOption,
-                    trailConditions: this.selectedTrailConditionsOption
+                    trailConditions: this.selectedTrailConditionsOption,
+                    picture: this.photos
                     //here we need to also grab latitude and longitude
                 };
 
@@ -229,18 +232,18 @@ Vue.component("report", {
                 //It is the data member that is connected to the v-model tag.
 
 
-                console.log(this.name)
-                console.log(this.date)
-                console.log(this.location)
-                console.log(this.latitude)
-                console.log(this.longitude)
-                console.log(this.upCount)
-                console.log(this.downCount)
-                console.log(this.selectedWeatherOption)
-                console.log(this.notes)
-                console.log(this.selectedVisitationOption)
-                console.log(this.selectedTrailStatusOption)
-                console.log(this.selectedTrailConditionsOption)
+                console.log(this.name);
+                console.log(this.date);
+                console.log(this.location);
+                console.log(this.latitude);
+                console.log(this.longitude);
+                console.log(this.upCount);
+                console.log(this.downCount);
+                console.log(this.selectedWeatherOption);
+                console.log(this.notes);
+                console.log(this.selectedVisitationOption);
+                console.log(this.selectedTrailStatusOption);
+                console.log(this.selectedTrailConditionsOption);
 
                 //The email call should go here:
                 //->
@@ -249,47 +252,48 @@ Vue.component("report", {
                 window.open("mailto:" + email + "?subject=" + park + "&body=" + 
                     "Name:%20" + this.name + "%0A" +
                     "Date:%20" + this.date + "%0A" +
-                    "StartTime:%20" + startTime + "%0A" +
-                    "EndTime:%20" + endTime + "%0A" +
+                    "Start%20Time:%20" + startTime + "%0A" +
+                    "End%20Time:%20" + endTime + "%0A" +
                     "Location:%20" + this.location + "%0A" +
-                    "GeoLocation:%20" + this.latitude + ",%20" + this.longitude + "%0A" +
+                    "GeoLocation:%20" + this.geolocation + "%0A" +
                     "Count%20Upwards:%20" + this.upCount + "%0A" + 
                     "Count%20Downwards:%20" + this.downCount + "%0A" + 
                     "Weather:%20" + this.weather + "%0A" + 
                     "Visitation%20Report:%20" + this.selectedVisitationOption + "%0A" +
                     "Trail%20Status:%20" + this.selectedTrailStatusOption + "%0A" + 
                     "Trail%20Condition:%20" + this.selectedTrailConditionsOption + "%0A" +
-                    "Notes:%20" + this.notes
+                    "Notes:%20" + this.notes + "%0A"
+
                 );
                 //
 
-                eventBus.$emit('review-submitted', productReview)
-                this.name = null
+                eventBus.$emit('review-submitted', productReview);
+                this.name = null;
             }
             else {
-                if (!this.name) this.errors.push("Name required.")
+                if (!this.name) this.errors.push("Name required.");
             }
         },
         // these simply increment the counters for up and down direction.
         addUpCount() {
-            this.upCount += 1
+            this.upCount += 1;
         },
         addDownCount() {
-            this.downCount += 1
+            this.downCount += 1;
         }
     }
-})
+});
 
 var app = new Vue({
     el: "#app",
     data() {
         return {
             parkName: "Zion"
-        }
+        };
     },
     methods: {
     }
-})
+});
 
 
 //used to find location:
