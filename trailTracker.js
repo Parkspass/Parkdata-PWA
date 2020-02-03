@@ -306,17 +306,17 @@ Vue.component("report", {
                 //The email call should go here:
                 //->
                 var email = "ckgard27@gmail.com";
-                var park = "Zion%20Data%20Submission"
+                var park = "Zion%20Data%20Submission";
                 window.open("mailto:" + email + "?subject=" + park + "&body=" + 
                     "Name:%20" + this.name + "%0A" +
                     "Date:%20" + this.date + "%0A" +
                     "Start%20Time:%20" + startTime + "%0A" +
                     "End%20Time:%20" + endTime + "%0A" +
                     "Location:%20" + this.location + "%0A" +
-                    "GeoLocation:%20" + this.geolocation + "%0A" +
+                    "GeoLocation:%20" + this.latitude + "," + "%20" + this.longitude + "%0A" +
                     "Count%20Upwards:%20" + this.upCount + "%0A" + 
                     "Count%20Downwards:%20" + this.downCount + "%0A" + 
-                    "Weather:%20" + this.weather + "%0A" + 
+                    "Weather:%20" + this.selectedWeatherOption + "%0A" + 
                     "Visitation%20Report:%20" + this.selectedVisitationOption + "%0A" +
                     "Trail%20Status:%20" + this.selectedTrailStatusOption + "%0A" + 
                     "Trail%20Condition:%20" + this.selectedTrailConditionsOption + "%0A" +
