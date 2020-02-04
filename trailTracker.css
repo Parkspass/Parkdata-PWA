@@ -93,6 +93,17 @@ textarea {
 #visitation_button, #trail_status_button, #trail_conditions_button{
     margin-right: 0px;
 }
+#add_picture_button{
+    border: none;
+    box-shadow: none;
+    align-content: middle;
+    width: 100%;
+    margin: 0px;
+    height: 60px;
+}
 #submit{
-    background-color: none;
+    background-color: #FF6633;
+    text-align: center;
+    color: white;
+    font-size: 24px;
 }

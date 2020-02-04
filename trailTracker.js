@@ -111,14 +111,12 @@ Vue.component("report", {
             </div>
         </p>
 
-
-        <div class="input-wrapper">
-            <label id="photos">Photos</label>
-            <input type="file" id="file" accept=".jpg, .jpeg, .png" name="file" multiple>
-        </div>
+        <p>
+            <img id="add_picture_button" src="pics/add_picture_button.svg">
+        </p>
 
         <p>
-            <input id="submit" type="submit" value="Submit">
+            <input id="submit" type="submit" value="Send">
         </p>
 
     </form>
