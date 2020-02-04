@@ -25,82 +25,90 @@ Vue.component("report", {
             </ul>
         </p>
         <p>
-            <label>Name:</label>
-            <input id="name" v-model="name" placeholder="name">
+            <div class="inputline">
+                <img id="name_button" src="pics/name_button.svg"><input id="name" v-model="name" placeholder="Staff/VIP Name(s)">
+            </div>
         </p>
         <p>
-            <label>Date:</label>
-            <input id="date"
-                v-model="date"
-                placeholder="date"
-                type="date">
+            <div class="inputline">
+                <img id="date_button" src="pics/date_button.svg"><input id="date"
+                    v-model="date"
+                    placeholder="date"
+                    type="date">
+            </div>
         </p>
         <p>
-            <label>Trail or Segment Name:</label>
-            <select id="location" v-model="location">
-                <option
-                    v-for="(trail, index) in trails"
-                    :key="index">{{ trail }}</option>
-            </select>
-        </p>
-
-        <p>
-            <p id="status"></p>
-            <p>{{latitude}}</p>
-            <p>{{longitude}}</p>
+            <div class="inputline">
+                <img id="trail_button" src="pics/trail_button.svg"><select id="location" v-model="location">
+                    <option
+                        v-for="(trail, index) in trails"
+                        :key="index">{{ trail }}</option>
+                </select>
+            </div>
         </p>
 
         <p>
-            <label>Number of Encounters (Up Direction): {{ upCount }}</label>
-            <img v-on:click="addUpCount"
-                src="pics/button_up.png"></img>
+            <label>Number of Encounters: </label><label class="counter_right">Number of Encounters: </label><br>
+            <label id="counts">{{ upCount }}</label><label class="counter_right" id="counts">{{ downCount }}</label>
         </p>
 
         <p>
-            <label>Number of Encounters (Down Direction): {{ downCount }}</label>
-            <img v-on:click="addDownCount"
-                src="pics/button_down.png"></img>
+            <div class="count_buttons">
+                <img id="up_direction" v-on:click="addUpCount"
+                    src="pics/up_direction.svg"></img>
+                <img id="down_direction" v-on:click="addDownCount"
+                    src="pics/down_direction.svg"></img>
+            </div>
         </p>
 
         <p>
-            <label>Weather</label>
-            <select id="weatherOptions" v-model="selectedWeatherOption">
+            <div class="inputline">
+                <img id="weather_button" src="pics/weather_button.svg"><select id="weatherOptions" v-model="selectedWeatherOption">
                 <option
                     v-for="(weather, index) in weatherOptions"
                     :key="index">{{ weather }}</option>
-            </select>
+                </select>
+            </div>
         </p>
 
         <p>
-            <label>Notes:</label>
-            <textarea id="notes" v-model="notes"></textarea>
+            <div class="inputline">
+                <img id="notes_button" src="pics/notes_button.svg">
+                <textarea id="notes" v-model="notes"></textarea>
+            </div>
         </p>
 
         <p>
-            <label>Visitation</label>
-            <select id="visitationOptions" v-model="selectedVisitationOption">
-                <option
-                    v-for="(visitation, index) in visitationOptions"
-                    :key="index">{{ visitation }}</option>
-            </select>
+            <div class="inputline">
+                <img id="visitation_button" src="pics/visitation_button.svg">
+                <select id="visitationOptions" v-model="selectedVisitationOption">
+                    <option
+                        v-for="(visitation, index) in visitationOptions"
+                        :key="index">{{ visitation }}</option>
+                </select>
+            </div>
         </p>
 
         <p>
-            <label>Trail Status</label>
-            <select id="trailStatusOptions" v-model="selectedTrailStatusOption">
-                <option
-                    v-for="(trailStatus, index) in trailStatusOptions"
-                    :key="index">{{ trailStatus }}</option>
-            </select>
+            <div class="inputline">
+                <img id="trail_status_button" src="pics/trail_status_button.svg">
+                <select id="trailStatusOptions" v-model="selectedTrailStatusOption">
+                    <option
+                        v-for="(trailStatus, index) in trailStatusOptions"
+                        :key="index">{{ trailStatus }}</option>
+                </select>
+            </div>
         </p>
 
         <p>
-            <label>Trail Conditions</label>
-            <select id="trailConditionsOptions" v-model="selectedTrailConditionsOption">
-                <option
-                    v-for="(trailConditions, index) in trailConditionsOptions"
-                    :key="index">{{ trailConditions }}</option>
-            </select>
+            <div class="inputline">
+                <img id="trail_conditions_button" src="pics/trail_conditions_button.svg">
+                <select id="trailConditionsOptions" v-model="selectedTrailConditionsOption">
+                    <option
+                        v-for="(trailConditions, index) in trailConditionsOptions"
+                        :key="index">{{ trailConditions }}</option>
+                </select>
+            </div>
         </p>
 
 
@@ -110,7 +118,7 @@ Vue.component("report", {
         </div>
 
         <p>
-            <input type="submit" value="Submit">
+            <input id="submit" type="submit" value="Submit">
         </p>
 
     </form>
@@ -257,8 +265,6 @@ Vue.component("report", {
             console.log(`Latitude : ${latitude}`);
             console.log(`Longitude: ${longitude}`);
             console.log(`More or less ${crd.accuracy} meters.`);
-
-            status.textContent = "";
 
             this.latitude = latitude;
             this.longitude = longitude;
