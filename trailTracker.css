@@ -1,7 +1,7 @@
 body {
-        font-family: tahoma;
-        color:#282828;
-        margin: 0px;
+    font-family: tahoma;
+    color:#282828;
+    margin: 0px;
 }
 
 img {
@@ -30,11 +30,69 @@ button {
 
 input {
     width: 100%;  
-    height: 25px;
-    margin-bottom: 20px;
+    height: 35px;
 }
 
 textarea {
     width: 100%;
     height: 60px;
+}
+#date{
+    font-family: tahoma;
+}
+.inputline{
+    display: inline;
+}
+#name_button, #date_button, #trail_button, #weather_button, #notes_button,
+#visitation_button, #trail_status_button, #trail_conditions_button{
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: none;
+    box-shadow: none;
+    margin-bottom: -5px;
+}
+#name, #date, #notes{
+    align-content: middle;
+    width: 87%;
+    margin-bottom: none;
+    margin-top: none;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(166, 166, 166);
+    background-color: #f8f8f8;
+}
+#location, #weatherOptions, #visitationOptions, #trailStatusOptions, #trailConditionsOptions{
+    align-content: middle;
+    width: 90%;
+    margin-bottom: none;
+    margin-top: none;
+    height: 35px;
+}
+.counter_right{
+    float: right;
+}
+#counts{
+    font-weight: bold;
+    font-size: 20px;
+}
+#count_buttons{
+    display: inline-flex;
+}
+#up_direction, #down_direction{
+    margin: 5px 0px;
+    border: none;
+    box-shadow: none;
+    width: 49%;
+}
+#notes_button{
+    margin: 0px;
+    margin-left: 5px;
+    margin-bottom: 22px;
+}
+#visitation_button, #trail_status_button, #trail_conditions_button{
+    margin-right: 0px;
+}
+#submit{
+    background-color: none;
 }
