@@ -112,7 +112,14 @@ Vue.component("report", {
         </p>
 
         <p>
-            <img id="add_picture_button" src="pics/add_picture_button.svg">
+            <input id="add_picture_button" 
+            src="pics/add_picture_button.svg" 
+            type="file" 
+            name="image" 
+            accept="image/*" 
+            capture="environment">
+            <p>Please insert the taken photo into the email.</p>
+
         </p>
 
         <p>
@@ -253,21 +260,6 @@ Vue.component("report", {
             var endDate = new Date();
             var endTime = endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
             if (this.name) {
-                let productReview = {
-                    name: this.name,
-                    date: this.date,
-                    location: this.location,
-                    geolocation: this.latitude + "," + this.longitude,
-                    upCount: this.upCount,
-                    downCount: this.downCount,
-                    weather: this.selectedWeatherOption,
-                    notes: this.notes,
-                    visitation: this.selectedVisitationOption,
-                    trailStatus: this.selectedTrailStatusOption,
-                    trailConditions: this.selectedTrailConditionsOption,
-                    picture: this.photos
-                    //here we need to also grab latitude and longitude
-                };
 
                 //We are now able to access the data with these names:
                 //It is the data member that is connected to the v-model tag.
@@ -308,8 +300,6 @@ Vue.component("report", {
                 );
                 //
 
-                eventBus.$emit('review-submitted', productReview);
-                this.name = null;
             }
             else {
                 if (!this.name) this.errors.push("Name required.");
