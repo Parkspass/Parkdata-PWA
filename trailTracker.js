@@ -300,8 +300,6 @@ Vue.component("report", {
                 );
                 //
 
-                eventBus.$emit('review-submitted', productReview);
-                this.name = null;
             }
             else {
                 if (!this.name) this.errors.push("Name required.");
