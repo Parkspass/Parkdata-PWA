@@ -112,14 +112,15 @@ Vue.component("report", {
         </p>
 
         <p>
-            <input id="add_picture_button" 
-            src="pics/add_picture_button.svg" 
-            type="file" 
-            name="image" 
-            accept="image/*" 
-            capture="environment">
+            <div id="add_picture_button">
+                <input class="hide_file" 
+                src="pics/add_picture_button.svg" 
+                type="file" 
+                name="image" 
+                accept="image/*" 
+                capture="environment">
+            </div>
             <p>Please insert the taken photo into the email.</p>
-
         </p>
 
         <p>
