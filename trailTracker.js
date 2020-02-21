@@ -18,12 +18,6 @@ var startTime = startDate.getHours() + ":" + startDate.getMinutes() + ":" + star
 Vue.component("report", {
     template: `
     <form class="review-form" @submit.prevent="onSubmit">
-        <p v-if="errors.length">
-            <b> Please correct the following error(s):</b>
-            <ul>
-                <li v-for="error in errors">{{ error }}</li>
-            </ul>
-        </p>
         <p>
             <div class="inputline">
                 <img id="name_button" src="pics/name_button.svg"><input id="name" v-model="name" placeholder="Staff/VIP Name(s)">
@@ -124,6 +118,12 @@ Vue.component("report", {
 
         <p>
             <input id="submit" type="submit" value="Send">
+        </p>
+        <p v-if="errors.length">
+            <b> Please correct the following error(s):</b>
+            <ul>
+                <li class="errorMessages" v-for="error in errors">{{ error }}</li>
+            </ul>
         </p>
 
     </form>
@@ -257,9 +257,14 @@ Vue.component("report", {
         // need to rewrite onSubmit to send a confirmation to the user
         // and send the report via email.
         onSubmit() {
+            //reset the errors list:
+            console.log(this.errors.length);
+            for(i = 0; i <= this.errors.length; i++){
+                this.errors.pop();
+            };
             var endDate = new Date();
             var endTime = endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
-            if (this.name) {
+            if (this.name && this.location) {
 
                 //We are now able to access the data with these names:
                 //It is the data member that is connected to the v-model tag.
@@ -267,6 +272,8 @@ Vue.component("report", {
 
                 console.log(this.name);
                 console.log(this.date);
+                console.log(startTime);
+                console.log(endTime);
                 console.log(this.location);
                 console.log(this.latitude);
                 console.log(this.longitude);
@@ -280,22 +287,22 @@ Vue.component("report", {
 
                 //The email call should go here:
                 //->
-                var email = "ckgard27@gmail.com";
                 var park = "Zion%20Data%20Submission";
-                window.open("mailto:" + email + "?subject=" + park + "&body=" + 
-                    "Name:%20" + this.name + "%0A" +
-                    "Date:%20" + this.date + "%0A" +
-                    "Start%20Time:%20" + startTime + "%0A" +
-                    "End%20Time:%20" + endTime + "%0A" +
-                    "Location:%20" + this.location + "%0A" +
-                    "GeoLocation:%20" + this.latitude + "," + "%20" + this.longitude + "%0A" +
-                    "Count%20Upwards:%20" + this.upCount + "%0A" + 
-                    "Count%20Downwards:%20" + this.downCount + "%0A" + 
-                    "Weather:%20" + this.selectedWeatherOption + "%0A" + 
-                    "Visitation%20Report:%20" + this.selectedVisitationOption + "%0A" +
-                    "Trail%20Status:%20" + this.selectedTrailStatusOption + "%0A" + 
-                    "Trail%20Condition:%20" + this.selectedTrailConditionsOption + "%0A" +
-                    "Notes:%20" + this.notes + "%0A"
+                window.open("mailto:" + "?subject=" + park + "&body=" + 
+                    this.name + ";" +
+                    this.date + ";" +
+                    startTime + ";" +
+                    endTime + ";" +
+                    this.location + ";" +
+                    this.latitude + ";" +
+                    this.longitude + ";" +
+                    this.upCount + ";" + 
+                    this.downCount + ";" + 
+                    this.selectedWeatherOption + ";" + 
+                    this.selectedVisitationOption + ";" +
+                    this.selectedTrailStatusOption + ";" + 
+                    this.selectedTrailConditionsOption + ";" +
+                    this.notes + ";"
 
                 );
                 //
@@ -303,6 +310,7 @@ Vue.component("report", {
             }
             else {
                 if (!this.name) this.errors.push("Name required.");
+                if (!this.location) this.errors.push("Trail required.");
             }
         },
         // these simply increment the counters for up and down direction.
