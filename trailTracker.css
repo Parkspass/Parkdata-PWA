@@ -95,7 +95,6 @@ textarea {
 }
 #add_picture_button{
     padding:5px 10px;
-    background:url("pics/add_picture_button.svg") no-repeat;
     position:relative;
     color:#fff;
     border-radius:2px;
@@ -103,6 +102,11 @@ textarea {
     float:left;
     cursor:pointer;
     width: 100%;
+}
+.hide_file > input {
+    visibility:hidden;
+    width:0;
+    height:0
 }
 #submit{
     background-color: #FF6633;
