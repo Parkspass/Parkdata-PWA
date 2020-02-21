@@ -106,16 +106,21 @@ Vue.component("report", {
         </p>
 
         <p>
-            <label for="image">
+            <div id="addPicWrapper">
                 <input class="hide_file" 
                 type="file" 
+                ref="file"
                 name="image" 
                 accept="image/*" 
                 capture="environment"
-                style=display:"none;">
-                <img src="pics/add_picture_button.svg">
-            </label>
-            <p>Please insert the taken photo into the email.</p>
+                style="display:none;boder:none;">
+                <img 
+                src="pics/add_picture_button.svg"
+                @click="$refs.file.click()"
+                >
+                </input>
+            </div>
+            <p id="centerP">Please insert the taken photo into the email.</p>
         </p>
 
         <p>
@@ -321,6 +326,9 @@ Vue.component("report", {
         },
         addDownCount() {
             this.downCount += 1;
+        },
+        addPicButton(){
+            
         }
     }
 });
