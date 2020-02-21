@@ -34,6 +34,7 @@ Vue.component("report", {
         <p>
             <div class="inputline">
                 <img id="trail_button" src="pics/trail_button.svg"><select id="location" v-model="location">
+                    <option :value="null" disabled>Select a Trail...</option>
                     <option
                         v-for="(trail, index) in trails"
                         :key="index">{{ trail }}</option>
@@ -58,6 +59,7 @@ Vue.component("report", {
         <p>
             <div class="inputline">
                 <img id="weather_button" src="pics/weather_button.svg"><select id="weatherOptions" v-model="selectedWeatherOption">
+                <option :value="null" disabled>Weather...</option>
                 <option
                     v-for="(weather, index) in weatherOptions"
                     :key="index">{{ weather }}</option>
@@ -68,7 +70,7 @@ Vue.component("report", {
         <p>
             <div class="inputline">
                 <img id="notes_button" src="pics/notes_button.svg">
-                <textarea id="notes" v-model="notes"></textarea>
+                <textarea id="notes" v-model="notes" placeholder="Notes"></textarea>
             </div>
         </p>
 
@@ -76,6 +78,7 @@ Vue.component("report", {
             <div class="inputline">
                 <img id="visitation_button" src="pics/visitation_button.svg">
                 <select id="visitationOptions" v-model="selectedVisitationOption">
+                    <option :value="null" disabled>Visitation Status...</option>
                     <option
                         v-for="(visitation, index) in visitationOptions"
                         :key="index">{{ visitation }}</option>
@@ -87,6 +90,7 @@ Vue.component("report", {
             <div class="inputline">
                 <img id="trail_status_button" src="pics/trail_status_button.svg">
                 <select id="trailStatusOptions" v-model="selectedTrailStatusOption">
+                    <option :value="null" disabled>Trail Status...</option>
                     <option
                         v-for="(trailStatus, index) in trailStatusOptions"
                         :key="index">{{ trailStatus }}</option>
@@ -98,6 +102,7 @@ Vue.component("report", {
             <div class="inputline">
                 <img id="trail_conditions_button" src="pics/trail_conditions_button.svg">
                 <select id="trailConditionsOptions" v-model="selectedTrailConditionsOption">
+                    <option :value="null" disabled>Trail Condition...</option>
                     <option
                         v-for="(trailConditions, index) in trailConditionsOptions"
                         :key="index">{{ trailConditions }}</option>
@@ -114,7 +119,7 @@ Vue.component("report", {
                 accept="image/*" 
                 capture="environment"
                 style="display:none;boder:none;">
-                <img 
+                <img id="addPictureCss"
                 src="pics/add_picture_button.svg"
                 @click="$refs.file.click()"
                 >
@@ -124,7 +129,7 @@ Vue.component("report", {
         </p>
 
         <p>
-            <input id="submit" type="submit" value="Send">
+            <input id="submit" type="submit" value="Send" style="border-radius:5px;">
         </p>
         <p v-if="errors.length">
             <b> Please correct the following error(s):</b>
