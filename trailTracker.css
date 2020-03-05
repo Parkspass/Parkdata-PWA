@@ -19,9 +19,7 @@ button {
 } 
 
 .review-form {
-    width: 400px;
     padding: 20px;
-    margin: 40px;
     border: 1px solid #d8d8d8;
 }
 
@@ -58,6 +56,9 @@ textarea {
     border-radius: 5px;
     border: 1px solid rgb(166, 166, 166);
     background-color: #f8f8f8;
+}
+#notes{
+    width: 83%;
 }
 #location, #weatherOptions, #visitationOptions, #trailStatusOptions, #trailConditionsOptions{
     align-content: middle;
