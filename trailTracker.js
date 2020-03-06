@@ -360,8 +360,8 @@ window.onload = () => {
 
 
 //used to make it persist:
-let deferredPrompt;
-const addBtn = document.querySelector('.add-button');
+// let deferredPrompt;
+// const addBtn = document.querySelector('.add-button');
 // addBtn.style.display = 'none';
 
 // window.addEventListener('beforeinstallprompt', (e) => {
