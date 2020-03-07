@@ -1,5 +1,6 @@
 body {
-    font-family: tahoma;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
     color:#282828;
     margin: 0px;
 }
@@ -7,16 +8,6 @@ body {
 img {
     width: 70%;
 }
-
-button {
-    margin-top: 30px;
-    border: none;
-    background-color: #1E95EA;
-    color: white;
-    height: 40px;
-    width: 100px;
-    font-size: 14px;
-} 
 
 .review-form {
     padding: 20px;
@@ -65,14 +56,22 @@ textarea {
     width: 90%;
     margin-bottom: none;
     margin-top: none;
+    padding-left: 10px;
     height: 35px;
+    border: 1px solid rgb(166, 166, 166) !important;
+    background-color: #f8f8f8 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
+
 .counter_right{
     float: right;
+    font-size: 12px;
 }
 #counts{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
 }
 #count_buttons{
     display: inline-flex;

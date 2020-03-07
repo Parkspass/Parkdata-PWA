@@ -43,7 +43,7 @@ Vue.component("report", {
         </p>
 
         <p>
-            <label>Number of Encounters: </label><label class="counter_right">Number of Encounters: </label><br>
+            <label style="font-size: 12px;">Number of Encounters: </label><label class="counter_right">Number of Encounters: </label><br>
             <label id="counts">{{ upCount }}</label><label class="counter_right" id="counts">{{ downCount }}</label>
         </p>
 
