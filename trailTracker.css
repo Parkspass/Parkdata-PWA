@@ -132,3 +132,6 @@ textarea {
 #addPictureCss{
     width: 100%;
 }
+.errorMessages{
+    color: red;
+}
