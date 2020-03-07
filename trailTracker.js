@@ -43,7 +43,7 @@ Vue.component("report", {
         <p>
             <div class="inputline">
                 <img id="trail_button" src="pics/trail_button.svg"><select id="location" v-model="location">
-                    <option :value="null" disabled>Select a Trail...</option>
+                    <option :value="null" disabled>Trail or Segment Name</option>
                     <option
                         v-for="(trail, index) in trails"
                         :key="index">{{ trail }}</option>
@@ -52,7 +52,7 @@ Vue.component("report", {
         </p>
 
         <p>
-            <label>Number of Encounters: </label><label class="counter_right">Number of Encounters: </label><br>
+            <label style="font-size: 12px;">Number of Encounters: </label><label class="counter_right">Number of Encounters: </label><br>
             <label id="counts">{{ upCount }}</label><label class="counter_right" id="counts">{{ downCount }}</label>
         </p>
 
@@ -68,7 +68,7 @@ Vue.component("report", {
         <p>
             <div class="inputline">
                 <img id="weather_button" src="pics/weather_button.svg"><select id="weatherOptions" v-model="selectedWeatherOption">
-                <option :value="null" disabled>Weather...</option>
+                <option :value="null" disabled>Weather</option>
                 <option
                     v-for="(weather, index) in weatherOptions"
                     :key="index">{{ weather }}</option>
@@ -87,7 +87,7 @@ Vue.component("report", {
             <div class="inputline">
                 <img id="visitation_button" src="pics/visitation_button.svg">
                 <select id="visitationOptions" v-model="selectedVisitationOption">
-                    <option :value="null" disabled>Visitation Status...</option>
+                    <option :value="null" disabled>Visitation Status</option>
                     <option
                         v-for="(visitation, index) in visitationOptions"
                         :key="index">{{ visitation }}</option>
@@ -99,7 +99,7 @@ Vue.component("report", {
             <div class="inputline">
                 <img id="trail_status_button" src="pics/trail_status_button.svg">
                 <select id="trailStatusOptions" v-model="selectedTrailStatusOption">
-                    <option :value="null" disabled>Trail Status...</option>
+                    <option :value="null" disabled>Trail Status</option>
                     <option
                         v-for="(trailStatus, index) in trailStatusOptions"
                         :key="index">{{ trailStatus }}</option>
@@ -111,7 +111,7 @@ Vue.component("report", {
             <div class="inputline">
                 <img id="trail_conditions_button" src="pics/trail_conditions_button.svg">
                 <select id="trailConditionsOptions" v-model="selectedTrailConditionsOption">
-                    <option :value="null" disabled>Trail Condition...</option>
+                    <option :value="null" disabled>Trail Conditions</option>
                     <option
                         v-for="(trailConditions, index) in trailConditionsOptions"
                         :key="index">{{ trailConditions }}</option>
