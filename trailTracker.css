@@ -40,7 +40,7 @@ textarea {
 }
 #name, #date, #notes{
     align-content: middle;
-    width: 87%;
+    width: 85%;
     margin-bottom: none;
     margin-top: none;
     padding-left: 10px;
@@ -105,11 +105,13 @@ textarea {
     width:0;
     height:0
 }
-#submit{
+.submit{
     background-color: #FF6633;
     text-align: center;
     color: white;
     font-size: 24px;
+    border-radius:5px;
+    width: 100%
 }
 .hide_file {
     position: absolute;

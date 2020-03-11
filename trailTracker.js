@@ -146,7 +146,7 @@ Vue.component("report", {
         </p>
 
         <p>
-            <input id="submit" type="submit" value="Send" style="border-radius:5px;">
+            <input class="submit" type="submit" value="Send">
         </p>
 
     </form>
@@ -310,7 +310,7 @@ Vue.component("report", {
                 //The email call should go here:
                 //->
                 var park = "Zion%20Data%20Submission";
-                window.open("mailto:" + "?subject=" + park + "&body=" + 
+                window.location.href="mailto:" + "?subject=" + park + "&body=" + 
                     this.name + ";" +
                     this.date + ";" +
                     startTime + ";" +
@@ -326,7 +326,7 @@ Vue.component("report", {
                     this.selectedTrailConditionsOption + ";" +
                     this.notes + ";"
 
-                );
+                ;
                 //
 
             }
