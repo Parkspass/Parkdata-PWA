@@ -356,7 +356,7 @@ window.onload = () => {
         navigator.serviceWorker
                  .register('./sw.js');
     }
-}
+};
 
 
 //used to make it persist:
