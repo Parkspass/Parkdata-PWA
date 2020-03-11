@@ -20,16 +20,25 @@ Vue.component("report", {
     <form class="review-form" @submit.prevent="onSubmit">
         <p>
             <div class="inputline">
-                <img id="name_button" src="pics/name_button.svg"><input id="name" v-model="name" placeholder="Staff/VIP Name(s)">
+                <img id="name_button" src="pics/name_button.svg">
+                <input type="text" id="name" v-model="name" placeholder="Staff/VIP Name(s)">
             </div>
+        </p>
+        <p v-if="nameError">
+            <span class="errorMessages">Name required.</span>
         </p>
         <p>
             <div class="inputline">
-                <img id="date_button" src="pics/date_button.svg"><input id="date"
+                <img id="date_button" src="pics/date_button.svg">
+                <input
+                    id="date"
                     v-model="date"
                     placeholder="date"
                     type="date">
             </div>
+        </p>
+        <p v-if="dateError">
+            <span class="errorMessages">Date required.</span>
         </p>
         <p>
             <div class="inputline">
@@ -127,15 +136,17 @@ Vue.component("report", {
             </div>
             <p id="centerP">Please insert the taken photo into the email.</p>
         </p>
+        
+        <p v-if="nameError || dateError">
+            <b> Please correct the following error(s):</b>
+            <ul>
+                <li v-if="nameError" class="errorMessages">Name required.</li>
+                <li v-if="dateError" class="errorMessages">Date required.</li>
+            </ul>
+        </p>
 
         <p>
             <input id="submit" type="submit" value="Send" style="border-radius:5px;">
-        </p>
-        <p v-if="errors.length">
-            <b> Please correct the following error(s):</b>
-            <ul>
-                <li class="errorMessages" v-for="error in errors">{{ error }}</li>
-            </ul>
         </p>
 
     </form>
@@ -150,7 +161,8 @@ Vue.component("report", {
             longitude: null,
             upCount: 0,
             downCount: 0,
-            errors: [],
+            dateError: false,
+            nameError: false,
             trails: [
                 "Upper Emerald Pools",
                 "Middle Emerald Pools",
@@ -270,13 +282,11 @@ Vue.component("report", {
         // and send the report via email.
         onSubmit() {
             //reset the errors list:
-            console.log(this.errors.length);
-            for(i = 0; i <= this.errors.length; i++){
-                this.errors.pop();
-            }
+            this.nameError = false;
+            this.dateError = false;
             var endDate = new Date();
             var endTime = endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
-            if (this.name && this.location) {
+            if (this.name && this.date) {
 
                 //We are now able to access the data with these names:
                 //It is the data member that is connected to the v-model tag.
@@ -321,8 +331,12 @@ Vue.component("report", {
 
             }
             else {
-                if (!this.name) this.errors.push("Name required.");
-                if (!this.location) this.errors.push("Trail required.");
+                if (!this.name) {
+                    this.nameError = true;
+                }
+                if (!this.date) {
+                    this.dateError = true;
+                }
             }
         },
         // these simply increment the counters for up and down direction.
