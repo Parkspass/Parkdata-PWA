@@ -25,7 +25,7 @@ Vue.component("report", {
             </div>
         </p>
         <p v-if="nameError">
-            <span class="errorMessages">Name required.</span>
+            <span class="errorMessages"><img src="pics/alert.png" style="width: 15px; height: auto; margin-right: 10px;">Name required.</span>
         </p>
         <p>
             <div class="inputline">
@@ -38,7 +38,7 @@ Vue.component("report", {
             </div>
         </p>
         <p v-if="dateError">
-            <span class="errorMessages">Date required.</span>
+            <span class="errorMessages"><img src="pics/alert.png" style="width: 15px; height: auto; margin-right: 10px;">Date required.</span>
         </p>
         <p>
             <div class="inputline">

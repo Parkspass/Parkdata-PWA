@@ -23,8 +23,9 @@ textarea {
     width: 100%;
     height: 60px;
 }
-#date{
+#date, #name{
     font-family: tahoma;
+    margin-left: -4px;
 }
 .inputline{
     display: inline;
@@ -34,30 +35,26 @@ textarea {
     width: 20px;
     height: 20px;
     margin: 5px;
+    margin-left: -5px;
     border: none;
     box-shadow: none;
     margin-bottom: -5px;
 }
+
 #name, #date, #notes{
-    align-content: middle;
-    width: 85%;
-    margin-bottom: none;
-    margin-top: none;
-    padding-left: 10px;
-    border-radius: 5px;
-    border: 1px solid rgb(166, 166, 166);
-    background-color: #f8f8f8;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
-#notes{
-    width: 86%;
-}
-#location, #weatherOptions, #visitationOptions, #trailStatusOptions, #trailConditionsOptions{
+
+#name, #date, #notes, #location, #weatherOptions, #visitationOptions, #trailStatusOptions, #trailConditionsOptions{
     align-content: middle;
     width: 90%;
     margin-bottom: none;
     margin-top: none;
     padding-left: 10px;
     height: 35px;
+    border-radius: 5px;
     border: 1px solid rgb(166, 166, 166) !important;
     background-color: #f8f8f8 !important;
     -webkit-appearance: none;
@@ -68,6 +65,10 @@ textarea {
 .counter_right{
     float: right;
     font-size: 12px;
+    margin-top: 4px;
+}
+#counts.counter_right{
+    margin-top: -1.5px;
 }
 #counts{
     font-weight: bold;
@@ -84,11 +85,13 @@ textarea {
 }
 #notes_button{
     margin: 0px;
-    margin-left: 5px;
-    margin-bottom: 22px;
+    margin-left: -5px;
+    margin-bottom: 8px;
+
 }
 #visitation_button, #trail_status_button, #trail_conditions_button{
     margin-right: 0px;
+    margin-left: -5px;
 }
 #add_picture_button{
     padding:5px 10px;
@@ -131,7 +134,8 @@ textarea {
     text-align: center;
 }
 #addPictureCss{
-    width: 100%;
+    width: 102%;
+    margin-left: -15px;
 }
 .errorMessages{
     color: red;
