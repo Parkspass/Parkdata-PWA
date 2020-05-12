@@ -13,7 +13,16 @@ img {
     padding: 20px;
     border: 1px solid #d8d8d8;
 }
-
+#title{
+    font-size: 20px;
+    vertical-align: middle;
+}
+.bison{
+    height: 25px;
+    width: 25px;
+    margin: 15px;
+    vertical-align: middle;
+}
 input {
     width: 100%;  
     height: 35px;
@@ -49,7 +58,7 @@ textarea {
 
 #name, #date, #notes, #location, #weatherOptions, #visitationOptions, #trailStatusOptions, #trailConditionsOptions{
     align-content: middle;
-    width: 90%;
+    width: 92%;
     margin-bottom: none;
     margin-top: none;
     padding-left: 10px;
@@ -82,6 +91,7 @@ textarea {
     border: none;
     box-shadow: none;
     width: 49%;
+    -webkit-appearance: none;
 }
 #notes_button{
     margin: 0px;
@@ -102,6 +112,7 @@ textarea {
     float:left;
     cursor:pointer;
     width: 100%;
+    -webkit-appearance: none;
 }
 .hide_file > input {
     visibility:hidden;
@@ -114,7 +125,8 @@ textarea {
     color: white;
     font-size: 24px;
     border-radius:5px;
-    width: 100%
+    width: 100%;
+    -webkit-appearance: none;
 }
 .hide_file {
     position: absolute;

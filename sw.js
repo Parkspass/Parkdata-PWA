@@ -1,3 +1,5 @@
+ /*jshint esversion: 6 */
+
 // we'll version our cache (and learn how to delete caches in
 // some other post)
 const cacheName = 'v1::static';
