@@ -47,7 +47,7 @@ self.addEventListener('install', function(e) {
         './site.webmanifest',
         './sw.js',
         './trailTracker.css',
-        './trailTracker.html',
+        './index.html',
         './trailTracker.js'
 
       ]).then(() => self.skipWaiting());
