@@ -2,7 +2,7 @@
     "name": "Park Data Counter",
     "short_name": "PDC",
     "lang": "en-US",
-    "start_url": "trailTracker.html",
+    "start_url": "index.html",
     "icons": [
         {
             "src": "./android-chrome-192x192.png",
