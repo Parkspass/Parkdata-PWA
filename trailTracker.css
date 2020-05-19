@@ -152,6 +152,8 @@ textarea {
 .errorMessages{
     color: red;
 }
+
+
 /* css for hamburger menu */
 a {
     text-decoration: none;
@@ -277,7 +279,7 @@ a {
     display: none;
 }
 
-@media only screen and (max-width: 375px){
+@media only screen and (max-width: 415px){
     .titleLG{
         display: none;
     }
